@@ -106,4 +106,4 @@ Parse PROTO_FILES and generate output based on the options given:
 ```
 
 # Example Project Structure
-See https://github.com/autokitteh/autokitteh/tree/main/api
+See https://github.com/autokitteh/idl.

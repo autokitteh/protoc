@@ -58,9 +58,6 @@ go_install "github.com/envoyproxy/protoc-gen-validate" "v${PROTOC_GEN_VALIDATE_V
 mkdir /proto/validate
 wget -O /proto/validate/validate.proto "https://raw.githubusercontent.com/envoyproxy/protoc-gen-validate/v${PROTOC_GEN_VALIDATE_VER}/validate/validate.proto"
 
-# protoc-gen-openapi
-go_install github.com/google/gnostic/cmd/protoc-gen-openapi "v${GNOSTIC_VER}"
-
 # grpc
 go_install "google.golang.org/grpc/cmd/protoc-gen-go-grpc" "v${GRPC_VER}"
 
@@ -70,16 +67,6 @@ go_install "google.golang.org/protobuf/cmd/protoc-gen-go" "v${PROTOC_GEN_GO_VER}
 # grpc-gateway
 go_install "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway" "v${GRPC_GATEWAY_VER}"
 go_install "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2" "v${GRPC_GATEWAY_VER}"
-
-# grpc-web
-# (need to build from scratch since no official arm64 version, see https://github.com/grpc/grpc-web/issues/1159)
-# TODO: move to official arm64 version.
-cd /tmp
-wget "https://github.com/grpc/grpc-web/archive/refs/tags/${GRPC_WEB_VER}.tar.gz"
-tar xvf "${GRPC_WEB_VER}.tar.gz"
-cd "grpc-web-${GRPC_WEB_VER}/javascript/net/grpc/web/generator"
-make
-mv protoc-gen-grpc-web /usr/local/bin
 
 # google apis
 # see https://grpc-ecosystem.github.io/grpc-gateway/docs/tutorials/adding_annotations/#using-protoc
